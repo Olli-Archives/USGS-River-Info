@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="./src/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,11 +11,23 @@
     <header>
         <h1>USGS RIVER INFO</h1>
     </header>
+    <div>
+        <p>This site returns the current discharge values of your rivers.  To 
+            find a site id of your river go to USGS website.
+        </p>
+    </div>
     <form>
         <h2>Add Another River</h2>
-        <input place holder ="USGS SITE ID"></input>
-        <input place holder= "NICK NAME FOR SITE">
+        <input placeholder= "USGS SITE ID">
+        <input placeholder= "RE ENTER SITE ID">
+        <input placeholder= "RIVER NAME"></input>
+        <button>Submit New Site</button>
     </form>
-    
+    <ul id = "river-list">
+        <li><span>Washougal</span><span>current CFS:</span><span>1400</span></li>
+        <li><span>Dechuttes</span><span>current CFS:</span><span>160</span></li>
+        <li><span>Nahalem</span><span>current CFS:</span><span>22000</span></li>
+        <li><span>Clackamas</span><span>current CFS:</span><span>6477</span></li>
+    </ul>   
 </body>
 </html>
