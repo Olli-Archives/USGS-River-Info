@@ -1,6 +1,5 @@
 import { siteIdToQuery } from './url-functions.js';
 
-
 const flowNode = document.getElementById('checkbox-flow');
 const heightNode = document.getElementById('checkbox-height');
 const tempNode = document.getElementById('checkbox-temp');
@@ -17,11 +16,12 @@ export function handleNewSiteId(currentQuery) {
     const query = siteIdToQuery(params, currentQuery);
     window.location.hash = query;
 }
+
+
 submitSiteIdNode.addEventListener('click', event => {
     event.preventDefault();
     const siteId = siteInputNode.value;
     pushedSiteIds.push(siteId);
-    console.log('site ids', pushedSiteIds);
     handleNewSiteId();
 });
 

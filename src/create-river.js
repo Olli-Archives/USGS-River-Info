@@ -1,7 +1,8 @@
 const riverTableNode = document.getElementById('river-table');
 
+
+
 export function createRiver(river) {
-    console.log('passed file in createRiverTable', river);
     const template = document.createElement('template');
     const html = /*html*/
         `
@@ -17,10 +18,15 @@ export function createRiver(river) {
 }
 
 export default function createRiverTable(rivers) {
-   
+    while(riverTableNode.children.length > 0){
+        riverTableNode.firstElementChild.remove();
+    }
     rivers.forEach(river => {
         const tableItem = createRiver(river);
         riverTableNode.appendChild(tableItem);
 
     });
 }
+
+
+
