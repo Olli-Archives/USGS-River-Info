@@ -1,4 +1,4 @@
-import { createQuery, createURL } from '../src/url-functions.js';
+import { siteIdToQuery, createURL, createUrlParams } from '../src/url-functions.js';
 
 
 const test = QUnit.test;
@@ -7,7 +7,7 @@ QUnit.module('CREATE API QUERY');
 
 
 
-test('MAKE # for url from new params', assert => {
+test('SITE ID TO #', assert => {
     //takes current # and updates variables if need be
     
 
@@ -19,7 +19,7 @@ test('MAKE # for url from new params', assert => {
     const expected = 'format=json&sites=14301000&parameterCd=00060%2C00065&siteType=ST&siteStatus=all';
     const currentQuery = 'format=json&sites=14401000&parameterCd=00061%2C00065&siteType=ST&siteStatus=all';
     //act/
-    const actual = createQuery(params, currentQuery);
+    const actual = siteIdToQuery(params, currentQuery);
     //assert
 
     assert.equal(actual, expected);
@@ -44,18 +44,6 @@ test('MAKE URL for fetch from params', assert => {
 
 test('CREATE PARAMS from url #', assert => {
 
-    function createUrlParams(query) {
-        const UrlParams = new URLSearchParams(query);
-        const siteId = UrlParams.get('sites');
-        const parameterCd = UrlParams.get('parameterCd');
-        const params =
-        {
-            parameterCd: parameterCd,
-            siteId: parseInt(siteId)
-        };
-        return params;
-
-    }
 
     //arrange
     const query = 'format=json&sites=14301000&parameterCd=00060%2C00065&siteType=ST&siteStatus=all';

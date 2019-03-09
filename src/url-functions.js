@@ -1,4 +1,5 @@
-export function createQuery(params, currentQuery) {
+export function siteIdToQuery(params, currentQuery) {
+    console.log('params', params);
     const query = new URLSearchParams(currentQuery);
     query.set('format', 'json');
     query.set('sites', params.siteID);
@@ -18,3 +19,18 @@ export function createURL(params) {
     ApiURL.searchParams.set('siteStatus', 'all');
     return ApiURL.toString();
 }
+
+export function createUrlParams(query) {
+    console.log('query passed from hash change', query);
+    const UrlParams = new URLSearchParams(query);
+    const siteId = UrlParams.get('sites');
+    const parameterCd = UrlParams.get('parameterCd');
+    const params =
+    {
+        parameterCd: parameterCd,
+        siteId: siteId
+    };
+    console.log('search params created', params);
+    return params;
+}
+
