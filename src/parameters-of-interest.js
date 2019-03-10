@@ -1,20 +1,35 @@
-import { siteIdToQuery } from './url-functions.js';
+import { writeToQuery, writeParameterCdToQuery } from './url-functions.js';
 
-const flowNode = document.getElementById('checkbox-flow');
 const heightNode = document.getElementById('checkbox-height');
 const tempNode = document.getElementById('checkbox-temp');
 const siteInputNode = document.getElementById('site-id');
 const submitSiteIdNode = document.getElementById('submit-site-id');
+let currenQuery;
+
+
+function updateQuery(){
+    currenQuery = window.location.hash.slice(1);
+}
 
 
 //global variables
 const pushedSiteIds = [];
+let waterParams = ['00060'];
+let filteredWaterParams;
+
+
+//filter params
+function filterWaterParams(){
+    filteredWaterParams = waterParams.filter(param => param.length > 1);
+}
+
+
 //**** */new site id related actions****
-export function handleNewSiteId(currentQuery) {
+function handleNewSiteId() {
     const allSites = pushedSiteIds.toString();
-    const params = { siteID: allSites };
-    const query = siteIdToQuery(params, currentQuery);
-    window.location.hash = query;
+    const params = { siteId: allSites };
+    const newQuery = writeToQuery(params, currenQuery);
+    window.location.hash = newQuery;
 }
 
 
@@ -27,18 +42,24 @@ submitSiteIdNode.addEventListener('click', event => {
 
 
 /////**** */check box related actions***
-flowNode.addEventListener('change', () => {
-    const checked = flowNode.checked;
-    console.log('flow status', checked);
-});
+
 
 heightNode.addEventListener('change', () => {
-    const checked = heightNode.checked;
-    console.log('height status', checked);
+    updateQuery();
+    heightNode.checked ? waterParams[1] = '00065' : waterParams[1] = '';
+    filterWaterParams();
+
+    const params = { parameterCd : filteredWaterParams.toString() };
+    const newQuery = writeParameterCdToQuery(params, currenQuery);
+    window.location.hash = newQuery;
 });
 
 tempNode.addEventListener('change', () => {
-    const checked = tempNode.checked;
-    console.log('height status', checked);
+    updateQuery();
+    tempNode.checked ? waterParams[2] = '00010' : waterParams[2] = '';
+    filterWaterParams();
+    const params = { parameterCd : filteredWaterParams.toString() };
+    const newQuery = writeParameterCdToQuery(params, currenQuery);
+    window.location.hash = newQuery;
 });
 

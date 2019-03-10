@@ -1,9 +1,8 @@
-export function siteIdToQuery(params, currentQuery) {
-    console.log('params', params);
+export function writeToQuery(params, currentQuery) {
     const query = new URLSearchParams(currentQuery);
     query.set('format', 'json');
-    query.set('sites', params.siteID);
-    query.set('parameterCd', '00060,00065');
+    query.set('sites', params.siteId ? params.siteId : '');
+    query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
     query.set('siteType', 'ST');
     query.set('siteStatus', 'all');
     return query.toString();
@@ -21,7 +20,6 @@ export function createURL(params) {
 }
 
 export function createUrlParams(query) {
-    console.log('query passed from hash change', query);
     const UrlParams = new URLSearchParams(query);
     const siteId = UrlParams.get('sites');
     const parameterCd = UrlParams.get('parameterCd');
@@ -29,8 +27,12 @@ export function createUrlParams(query) {
     {
         parameterCd: parameterCd,
         siteId: siteId
-    };
-    console.log('search params created', params);
+    }; 
     return params;
 }
 
+export function writeParameterCdToQuery(params, currentQuery) {
+    const query = new URLSearchParams(currentQuery);
+    query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
+    return query.toString();
+}
