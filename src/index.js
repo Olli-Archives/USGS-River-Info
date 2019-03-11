@@ -1,6 +1,6 @@
 import { createURL, createUrlParams } from './url-functions.js';
 import createRiverTable from './create-river.js';
-import './parameters-of-interest.js';
+import './search-interface.js';
 
 
 //query from url

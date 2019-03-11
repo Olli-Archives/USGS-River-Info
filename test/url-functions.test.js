@@ -1,4 +1,5 @@
-import { siteIdToQuery, createURL, createUrlParams } from '../src/url-functions.js';
+import { writeToQuery, createURL, createUrlParams } from '../src/url-functions.js';
+
 
 
 const test = QUnit.test;
@@ -19,7 +20,7 @@ test('SITE ID TO #', assert => {
     const expected = 'format=json&sites=14301000&parameterCd=00060%2C00065&siteType=ST&siteStatus=all';
     const currentQuery = 'format=json&sites=14401000&parameterCd=00061%2C00065&siteType=ST&siteStatus=all';
     //act/
-    const actual = siteIdToQuery(params, currentQuery);
+    const actual = writeToQuery(params, currentQuery);
     //assert
 
     assert.equal(actual, expected);
@@ -58,3 +59,4 @@ test('CREATE PARAMS from url #', assert => {
     //assert
     assert.deepEqual(actual, expected);
 });
+
