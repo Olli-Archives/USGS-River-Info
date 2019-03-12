@@ -36,7 +36,6 @@ export function createRiverLiHtml(river) {
 
 //not tested
 export default function renderRiverLi(riverInfo, listOfSites) {
-    console.log('riverInfo', riverInfo);
     while(riverTableNode.children.length >= listOfSites.length) {
         riverTableNode.firstElementChild.remove();
     }

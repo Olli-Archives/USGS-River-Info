@@ -1,6 +1,7 @@
 import renderRiverLi, { getListOfSiteIds, generateRiverInfo } from '../src/create-river.js';
 import { createURL, createUrlParams } from './url-functions.js';
 import './search-interface.js';
+import { auth } from '../firebase/firebase.js';
 
 //query from url
 let query = '';
@@ -25,4 +26,8 @@ window.addEventListener('hashchange', () => {
 });
 
 
+const logNode = document.getElementById('auth');
+logNode.addEventListener('click', ()=>{
+    console.log(auth);
+});
 
