@@ -13,4 +13,16 @@ table{
 li:nth-child(odd){
     background-color: lightblue;
 }
-
+#header-container img{
+    height:80px;
+    width:80px;
+    background-color:red;
+}
+#header-container header{
+    display:flex;
+    background-color: lightseagreen;
+    flex-direction:row;
+}
+#header-container h1{
+    flex-grow:1;
+}
