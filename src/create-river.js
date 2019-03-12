@@ -34,13 +34,14 @@ export function createRiverLiHtml(river) {
     return template.content;
 }
 
-
-export default function renderRiverLi(river, listOfSites) {
+//not tested
+export default function renderRiverLi(riverInfo, listOfSites) {
+    console.log('riverInfo', riverInfo);
     while(riverTableNode.children.length >= listOfSites.length) {
         riverTableNode.firstElementChild.remove();
     }
 
-    const tableItem = createRiverLiHtml(river);
+    const tableItem = createRiverLiHtml(riverInfo);
     riverTableNode.appendChild(tableItem);
 
 

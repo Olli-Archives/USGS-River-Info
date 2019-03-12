@@ -17,8 +17,7 @@ window.addEventListener('hashchange', () => {
             const listOfSites = getListOfSiteIds(body);
             listOfSites.forEach(siteId => {  
                 //relocate riverIfno         
-                const riverInfo = generateRiverInfo(body, siteId); 
-                console.log('spit out var.intrest', riverInfo);   
+                const riverInfo = generateRiverInfo(body, siteId);  
                 renderRiverLi(riverInfo, listOfSites);
             });      
         })
