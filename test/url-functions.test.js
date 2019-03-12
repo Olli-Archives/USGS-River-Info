@@ -14,7 +14,7 @@ test('SITE ID TO #', assert => {
 
     //arrange
     const params = {
-        siteID: 14301000,
+        siteId: '14301000',
         parameterCd: '00060,00065'
     };
     const expected = 'format=json&sites=14301000&parameterCd=00060%2C00065&siteType=ST&siteStatus=all';
@@ -51,7 +51,7 @@ test('CREATE PARAMS from url #', assert => {
     const expected =
     {
         parameterCd: '00060,00065',
-        siteId: 14301000
+        siteId: '14301000'
     };
 
     //act

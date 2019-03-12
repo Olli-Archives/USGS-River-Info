@@ -1,13 +1,16 @@
-#river-list{
+#river-table li {
+    display:flex;
     list-style: none;
 }
-#river-list span{
+#river-table div{
     margin:10px;
 }
 table{
     border:2px solid black;
     border-collapse:collapse;
 }
-tr:nth-child(odd){
+
+li:nth-child(odd){
     background-color: lightblue;
 }
+

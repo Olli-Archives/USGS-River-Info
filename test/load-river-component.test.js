@@ -1,4 +1,4 @@
-import { createRiver } from '../src/create-river.js';
+import { createRiverLiHtml } from '../src/create-river.js';
 const test = QUnit.test;
 import river from '../data/river.js';
 
@@ -11,15 +11,14 @@ test('create a template for river', assert => {
     //arrange
     const expected =
         /*html*/ `
-    <tr>
-        <th>River:</th>
-        <th>DESCHUTES RIVER NEAR MADRAS, OR</th>
-        <th>Flow (CFS):</th>
-        <th>1370</th>
-    </tr>
+    <li>
+        <div>DESCHUTES RIVER NEAR MADRAS, OR</div>
+        <div>Flow (CFS):</div>
+        <div>1370</div>
+    </li>
     `;
     //act
-    const actual = createRiver(river);
+    const actual = createRiverLiHtml(river);
     
     //assert
     assert.htmlEqual(actual, expected);
