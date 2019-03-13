@@ -11,9 +11,13 @@ export function createFavoriteLi(firebaseObject){
     return template.content;
 }
 
-export default function loadFavorites(firebaseObject){
+export default function loadFavorites(firebaseFavorites)
+{
     const favoritesNode = document.getElementById('favorites-ul');
-    const dom = createFavoriteLi(firebaseObject);
-    favoritesNode.appendChild(dom);
-
+    const favorites = Object.values(firebaseFavorites);
+    favorites.forEach(favorite =>{
+        console.log('favorite', favorite);
+        const dom = createFavoriteLi(favorite);
+        favoritesNode.appendChild(dom);
+    });
 }

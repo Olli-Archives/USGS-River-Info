@@ -66,7 +66,11 @@ export default function renderRiverLi(riverInfo, listOfSites) {
             const value = snapshot.val();
             let isFavorite = false;
             if(value) {
-                loadFavorites(value);
+                userFavoritesRef.once('value')
+                    .then(snapshot =>{
+                        const allFavorites = snapshot.val();
+                        loadFavorites(allFavorites);
+                    });
                 addFavorite();
             } else {
                 removeFavorite();
