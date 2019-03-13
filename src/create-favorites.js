@@ -14,6 +14,12 @@ export function createFavoriteLi(firebaseObject){
 export default function loadFavorites(firebaseFavorites)
 {
     const favoritesNode = document.getElementById('favorites-ul');
+
+    while(favoritesNode.children.length > 0){
+        console.log('removing extra children');
+        favoritesNode.firstChild.remove();
+    }
+
     const favorites = Object.values(firebaseFavorites);
     favorites.forEach(favorite =>{
         console.log('favorite', favorite);
