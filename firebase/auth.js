@@ -1,4 +1,9 @@
 import { auth } from './firebase.js';
+import createHeader from '../src/shared/create-header.js';
+
+
+const options = { skipAuth : true };
+createHeader(options);
 
 const ui = new firebaseui.auth.AuthUI(auth);
 

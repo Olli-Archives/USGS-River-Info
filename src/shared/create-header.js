@@ -33,4 +33,23 @@ export default function createHeader(options) {
     const header = dom.querySelector('header');
     headerContainer.appendChild(dom);
 
+    if(options && options.skipAuth) {
+        return;
+    }
+
+    auth.onAuthStateChanged(user => {
+        if(user){ //has user!!
+            const userDom = createAuthHeaderComponent(user);
+            const signOutButton = userDom.querySelector('button');
+            signOutButton.addEventListener('click', ()=> {
+                auth.signOut();
+                window.location.hash = '';
+            });
+            header.appendChild(userDom);      
+        }
+        else{
+            window.location = './auth.html' + window.location.hash;
+        }
+    });
+
 }
