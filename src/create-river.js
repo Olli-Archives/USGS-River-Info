@@ -1,4 +1,5 @@
 import { auth, favoritesByUserRef } from '../firebase/firebase.js';
+import loadFavorites from './create-favorites.js';
 
 
 export function generateRiverInfo(body, siteId) {
@@ -65,6 +66,7 @@ export default function renderRiverLi(riverInfo, listOfSites) {
             const value = snapshot.val();
             let isFavorite = false;
             if(value) {
+                loadFavorites(value);
                 addFavorite();
             } else {
                 removeFavorite();
