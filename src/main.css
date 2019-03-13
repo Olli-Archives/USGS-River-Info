@@ -26,3 +26,8 @@ li:nth-child(odd){
 #header-container h1{
     flex-grow:1;
 }
+
+.favorite-star{
+    user-select: none;
+    cursor: pointer;
+}

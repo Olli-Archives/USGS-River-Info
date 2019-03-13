@@ -23,16 +23,21 @@
         </p>
     </div>
     <form>
-        <h2>Add Another River</h2>
+        <h2>Get Live River Data By Site Id</h2>
         <input id= "site-id" placeholder= "USGS SITE ID">
         <button id= "submit-site-id">Submit New Site</button>
     </form>
     <form>
-        <h2>Parameters of Interest</h2>
-        <p>Flow is allways displayed,  chose additional params to display below</p>
+        <h2>Chose Additional Parameters To Display</h2>
         <input id="checkbox-height" type="checkbox">River Height (ft)</checkbox>
         <input id="checkbox-temp" type="checkbox">WaterTemp (F)</checkbox>
     </form>
+    <div>
+        <h2>Your Favorite Rivers</h2>
+        <ul>
+            <li><span>DESCHUTES RIVER NEAR MADRAS, OR</span><button>GET LIVE DATA</button><button>REMOVE FROM FAVORITES</button></li>
+        </ul>
+    </div>
     <div>
         <h2>Results</h2>
         <ul id= "river-table"></table>
