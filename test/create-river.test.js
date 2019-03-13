@@ -5,14 +5,14 @@ import { fetchBody } from '../data/river.js'; //examplex of data from API
 const test = QUnit.test;
 
 
-QUnit.module('create a river for table');
+QUnit.module('CREATE-RIVER.TEST.JS');
 test('create a template for river', assert => {
 
     //arrange
     const riverInfo = ['DESCHUTES RIVER NEAR MADRAS, OR', '6.8 deg C', '4380 ft3/s', '2.94 ft'];
     const expected =
         /*html*/ `
-        <li><div>DESCHUTES RIVER NEAR MADRAS, OR</div><div>6.8 deg C</div><div>4380 ft3/s</div><div>2.94 ft</div></li>
+        <li><span class="favorite-star">☆</span><div>DESCHUTES RIVER NEAR MADRAS, OR</div><div>6.8 deg C</div><div>4380 ft3/s</div><div>2.94 ft</div></li>
     `;
     //act
     const actual = createRiverLiHtml(riverInfo);
@@ -21,7 +21,6 @@ test('create a template for river', assert => {
     assert.htmlEqual(actual, expected);
 });
 
-QUnit.module('FORMAT FETCH BODY');
 test('GET LIST OF SITE IDS IN FETCH ', assert => {
     //arrange
     const expected = ['14092500', '14301000'];
@@ -34,7 +33,7 @@ test('GET LIST OF SITE IDS IN FETCH ', assert => {
 test('using site id get all variables of interest', assert =>{
     //arrange
     const siteId = '14092500';
-    const expected = ['DESCHUTES RIVER NEAR MADRAS, OR', '6.3 deg C', '4430 ft3/s', '2.96 ft'];
+    const expected = ['14092500', 'DESCHUTES RIVER NEAR MADRAS, OR', '6.3 deg C', '4430 ft3/s', '2.96 ft'];
     //act
     const actual = generateRiverInfo(fetchBody, siteId);
     //assert
