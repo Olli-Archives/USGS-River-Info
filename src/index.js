@@ -10,8 +10,8 @@ createHeader();
 let query = '';
 
 
-//render river data on hash change
-window.addEventListener('hashchange', () => {
+
+function loadList(){
     query = window.location.hash.slice(1);
     const params = createUrlParams(query);
     const apiURL = createURL(params);
@@ -26,7 +26,21 @@ window.addEventListener('hashchange', () => {
             });      
         })
         .catch(error => console.log(error));
+
+
+
+}
+
+//render river data on hash change
+window.addEventListener('hashchange', loadList);
+auth.onAuthStateChanged(() => {
+    if(auth.currentUser)
+    { 
+        console.log('user logged in, loading list');
+        loadList();
+    }
 });
+
 
 
 const logNode = document.getElementById('auth');
