@@ -3,15 +3,16 @@ import { auth, favoritesByUserRef } from '../firebase/firebase.js';
 
 export function generateRiverInfo(body, siteId) {
     const variablesOfInterest = [];
+    console.log('variables of intrest', variablesOfInterest);
     const arrayOfInfo = body.value.timeSeries;
     const filteredBody = arrayOfInfo.filter(array => array.sourceInfo.siteCode[0].value === siteId);
 
     variablesOfInterest.push(filteredBody[0].sourceInfo.siteName);
-    variablesOfInterest.push('(SITE-ID:');
+    variablesOfInterest.push('SITE-ID:');
 
     filteredBody.forEach(object => {
         console.log('object-river', object);
-        variablesOfInterest.push(`${object.sourceInfo.siteCode[0].value}) ${object.values[0].value[0].value} ${object.variable.unit.unitCode} `);
+        variablesOfInterest.push(object.sourceInfo.siteCode[0].value, `${object.values[0].value[0].value} ${object.variable.unit.unitCode}`);
     });
     return variablesOfInterest;
 }
@@ -54,9 +55,40 @@ export default function renderRiverLi(riverInfo, listOfSites) {
 
     const userId = auth.currentUser.uid;
     const userFavoritesRef = favoritesByUserRef.child(userId);
+    console.log('going to to ref', riverInfo);
     const userFavoriteMovieRef = userFavoritesRef.child(riverInfo[2]);
+    userFavoriteMovieRef.once('value')
+        .then(snapshot => {
+            const value = snapshot.val();
+            let isFavorite = false;
+            if(value) {
+                addFavorite();
+            } else {
+                removeFavorite();
+            }
+            function addFavorite(){
+                isFavorite = true;
+                favoriteStar.textContent = '★';
+                favoriteStar.classList.add('favorite');
+            }
+            function removeFavorite(){
+                isFavorite = false;
+                favoriteStar.textContent = '☆';
+                favoriteStar.classList.remove('favorite');
+            }
+            favoriteStar.addEventListener('click', ()=>{
+                if(isFavorite) {
+                    userFavoriteMovieRef.remove();
+                    removeFavorite();
+                } else {
+                    userFavoriteMovieRef.set({
+                        siteId: riverInfo[2]
+                    });
+                }
+            });
+        });
 
-    
+
 
     riverTableNode.appendChild(dom);//dom may change to modified var
 
