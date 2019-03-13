@@ -22,7 +22,7 @@ test('create un-authorized header', assert => {
 test('create-header.test.js**create auth header component', assert => {
 
     //arrange
-    const user = { user: 'Olli Nieminen' };
+    const user = { displayName: 'Olli Nieminen' };
     const expected = /*html*/`
     <div class="profile">
         <span>Welcome Olli Nieminen</span>

@@ -3,10 +3,11 @@
 import { auth } from '../../firebase/firebase.js';
 
 export function createAuthHeaderComponent(user) {
+    console.log('passed in user', user);
     const template = document.createElement('template');
     const html = `
     <div class="profile">
-        <span>Welcome ${user.user}</span>
+        <span>Welcome ${user.displayName}</span>
         <button>Sign Out</button>
     </div>
     `;
