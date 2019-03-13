@@ -3,11 +3,7 @@ import { writeToQuery, createURL, createUrlParams } from '../src/url-functions.j
 
 
 const test = QUnit.test;
-
-QUnit.module('CREATE API QUERY');
-
-
-
+QUnit.module('URL-UNCTIONS.TEST.JS');
 test('SITE ID TO #', assert => {
     //takes current # and updates variables if need be
     

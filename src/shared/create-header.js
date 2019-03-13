@@ -1,6 +1,8 @@
 
 
-export function createAuthHeaderComponent(user){
+import { auth } from '../../firebase/firebase.js';
+
+export function createAuthHeaderComponent(user) {
     const template = document.createElement('template');
     const html = `
     <div class="profile">
@@ -22,4 +24,13 @@ export function createNoUserHeader() {
     `;
     template.innerHTML = html;
     return template.content;
+}
+
+const headerContainer = document.getElementById('header-container');
+
+export default function createHeader(options) {
+    const dom = createNoUserHeader();
+    const header = dom.querySelector('header');
+    headerContainer.appendChild(dom);
+
 }

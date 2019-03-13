@@ -2,6 +2,9 @@ import renderRiverLi, { getListOfSiteIds, generateRiverInfo } from '../src/creat
 import { createURL, createUrlParams } from './url-functions.js';
 import './search-interface.js';
 import { auth } from '../firebase/firebase.js';
+import createHeader from './shared/create-header.js';
+
+createHeader();
 
 //query from url
 let query = '';
