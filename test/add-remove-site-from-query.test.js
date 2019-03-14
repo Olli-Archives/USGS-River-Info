@@ -1,42 +1,8 @@
-import { createUrlParams, writeToQuery, sliceSitesFromString } from '../src/url-functions.js';
+import { sliceSitesFromString, addRemoveSiteFromQuery } from '../src/url-functions.js';
 
 const test = QUnit.test
 
 QUnit.module('ADD-REMOVE-SITE.TEST.JS');
-
-
-function addRemoveSiteFromQuery(option, siteId, query) {
-    const currentUrlParams = createUrlParams(query);
-
-    let listOfSites = [];
-    if(option === 'add') {
-
-        listOfSites.push(currentUrlParams.siteId);
-        listOfSites.push(siteId);
-        const newParams = {
-            parameterCd: currentUrlParams.parameterCd,
-            siteId: listOfSites
-        };
-        const newQuery = writeToQuery(newParams, query);
-        return newQuery;
-    }
-    else if(option === 'subtract') {
-        //check if site id exists in current query
-        const currentSites = currentUrlParams.siteId;
-        const includes = currentSites.includes(siteId);
-        if(includes) {
-            const slicedSites = sliceSitesFromString(currentSites);
-            const newSites = slicedSites.filter(site => site !== siteId.toString());
-            const newParams = {
-                parameterCd: currentUrlParams.parameterCd,
-                siteId: newSites.toString()
-            };
-            const newQuery = writeToQuery(newParams, query);
-            return newQuery;
-        }
-        else {
-            console.log('site to be subtraced doesnt exist');
-        }}}
 
 
 test('add site to query', assert => {

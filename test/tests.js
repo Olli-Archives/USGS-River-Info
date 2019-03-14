@@ -3,4 +3,4 @@ import './create-river.test.js';
 import './url-functions.test.js';
 import './create-header.test.js';
 import './create-favorites.test.js';
-import './add-remove-site.test.js';
+import './add-remove-site-from-query.test.js';
