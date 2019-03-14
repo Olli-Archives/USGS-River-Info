@@ -36,3 +36,17 @@ export function writeParameterCdToQuery(params, currentQuery) {
     query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
     return query.toString();
 }
+
+export function sliceSitesFromString(sites) {
+    const numberOfSites = Math.ceil(sites.length / 9);
+    let startIndex = [];
+    let endIndex = [];
+
+    let slicedSites = [];
+    for(let i = 0; i < numberOfSites; i++) {
+        startIndex = (i * 9);
+        endIndex = ((i * 9) + 8);
+        slicedSites.push(sites.slice(startIndex, endIndex));
+    }
+    return slicedSites;
+}

@@ -1,4 +1,4 @@
-import { writeToQuery } from './url-functions.js';
+import { writeToQuery, createUrlParams } from './url-functions.js';
 
 
 export function createFavoriteLi(firebaseObject){
@@ -26,15 +26,20 @@ export default function loadFavorites(firebaseFavorites, currentQuery)
 
     const favorites = Object.values(firebaseFavorites);
     favorites.forEach(favorite =>{
+       
         console.log('favorite', favorite);
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
         buttonNode.addEventListener('click', ()=>{
             const currentQuery = window.location.hash.slice(1);
-            const params = { siteId: favorite.siteId };
-            const newParams = writeToQuery(params, currentQuery);
-            console.log('newPArams', newParams);
-            console.log('go live with data!!!', favorite.siteId);
+            const currentParams = createUrlParams(currentQuery);
+            console.log('current params', currentParams);
+            //const newParams = writeToQuery(params, currentQuery);
+            console.log('heyo', favorite.siteId);
+            currentParams.siteId = (currentParams.siteId + ',' + favorite.siteId);
+            const newQuery = writeToQuery(currentParams, currentQuery);
+            console.log('newQuery', newQuery);
+            window.location.hash = newQuery;
         });
 
         favoritesNode.appendChild(dom);
