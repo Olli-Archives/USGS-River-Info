@@ -7,7 +7,6 @@ import loadFavorites from './create-favorites.js';
 
 createHeader();
 
-//query from url
 let query = null;
 
 function loadList() {
@@ -15,7 +14,7 @@ function loadList() {
     const params = createUrlParams(query);
     const apiURL = createURL(params);
 
-    if (!query) {
+    if(!query) {
         return;
     }
 
@@ -38,15 +37,20 @@ window.addEventListener('hashchange', loadList);
 
 auth.onAuthStateChanged(() => {
     loadList();
-
     const userId = auth.currentUser.uid;
     const userFavoritesRef = favoritesByUserRef.child(userId);
     userFavoritesRef.once('value')
         .then(snapshot => {
             const value = Object.values(snapshot.val());
-            console.log('load favorites director', value);
             loadFavorites(value);
-
         });
 });
 
+//clear results 
+const clearReultsButton = document.getElementById('clear-results');
+
+clearReultsButton.addEventListener('click', ()=>{
+    event.preventDefault();
+    window.location.hash = '';
+    location.reload();
+});

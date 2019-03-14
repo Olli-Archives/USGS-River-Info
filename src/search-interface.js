@@ -1,4 +1,4 @@
-import { writeToQuery, writeParameterCdToQuery } from './url-functions.js';
+import { writeParameterCdToQuery, addRemoveSiteFromQuery } from './url-functions.js';
 
 const heightNode = document.getElementById('checkbox-height');
 const tempNode = document.getElementById('checkbox-temp');
@@ -13,7 +13,7 @@ function updateQuery(){
 
 
 //global variables
-const pushedSiteIds = [];
+
 let waterParams = ['00060'];
 let filteredWaterParams;
 
@@ -25,19 +25,13 @@ function filterWaterParams(){
 
 
 //**** */new site id related actions****
-function handleNewSiteId() {
-    const allSites = pushedSiteIds.toString();
-    const params = { siteId: allSites };
-    const newQuery = writeToQuery(params, currenQuery);
-    window.location.hash = newQuery;
-}
-
 
 submitSiteIdNode.addEventListener('click', event => {
     event.preventDefault();
+    updateQuery();
     const siteId = siteInputNode.value;
-    pushedSiteIds.push(siteId);
-    handleNewSiteId();
+    const newQuery = addRemoveSiteFromQuery('add', siteId, currenQuery);
+    window.location.hash = newQuery;
 });
 
 
