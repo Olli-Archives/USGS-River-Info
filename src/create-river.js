@@ -60,8 +60,8 @@ export default function renderRiverLi(riverInfo, listOfSites) {
 
     const userId = auth.currentUser.uid;
     const userFavoritesRef = favoritesByUserRef.child(userId);
-    const userFavoriteMovieRef = userFavoritesRef.child(riverInfo[0]);
-    userFavoriteMovieRef.once('value')
+    const userFavoriteRiverRef = userFavoritesRef.child(riverInfo[0]);
+    userFavoriteRiverRef.once('value')
         .then(snapshot => {
             const value = snapshot.val();
             let isFavorite = false;
@@ -87,10 +87,10 @@ export default function renderRiverLi(riverInfo, listOfSites) {
             }
             favoriteStar.addEventListener('click', ()=>{
                 if(isFavorite) {        
-                    userFavoriteMovieRef.remove();
+                    userFavoriteRiverRef.remove();
                     removeFavorite();
                 } else {
-                    userFavoriteMovieRef.set({
+                    userFavoriteRiverRef.set({
                         siteId: riverInfo[0],
                         locationName : riverInfo[1]
                     });

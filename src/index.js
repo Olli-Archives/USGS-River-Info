@@ -11,19 +11,24 @@ let query = '';
 
 
 
-function loadList(){
+function loadList() {
     query = window.location.hash.slice(1);
     const params = createUrlParams(query);
     const apiURL = createURL(params);
+
+    if(!query){
+        return;
+    }
+
     fetch(apiURL)
         .then(response => response.json())
         .then(body => {
             const listOfSites = getListOfSiteIds(body);
-            listOfSites.forEach(siteId => {  
+            listOfSites.forEach(siteId => {
                 //relocate riverIfno         
-                const riverInfo = generateRiverInfo(body, siteId);  
+                const riverInfo = generateRiverInfo(body, siteId);
                 renderRiverLi(riverInfo, listOfSites);
-            });      
+            });
         })
         .catch(error => console.log(error));
 
@@ -34,17 +39,13 @@ function loadList(){
 //render river data on hash change
 window.addEventListener('hashchange', loadList);
 auth.onAuthStateChanged(() => {
-    if(auth.currentUser)
-    { 
-        console.log('user logged in, loading list');
-        loadList();
-    }
+    loadList();
 });
 
 
 
 const logNode = document.getElementById('auth');
-logNode.addEventListener('click', ()=>{
+logNode.addEventListener('click', () => {
     console.log(auth);
 });
 
