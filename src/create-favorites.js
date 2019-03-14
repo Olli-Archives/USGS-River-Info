@@ -1,4 +1,4 @@
-import { writeToQuery, createUrlParams } from './url-functions.js';
+import { addRemoveSiteFromQuery } from './url-functions.js';
 
 
 export function createFavoriteLi(firebaseObject){
@@ -14,7 +14,7 @@ export function createFavoriteLi(firebaseObject){
     return template.content;
 }
 
-export default function loadFavorites(firebaseFavorites, currentQuery)
+export default function loadFavorites(firebaseFavorites)
 {
     const favoritesNode = document.getElementById('favorites-ul');
 
@@ -32,16 +32,9 @@ export default function loadFavorites(firebaseFavorites, currentQuery)
         const buttonNode = dom.querySelector('.live-data-btn');
         buttonNode.addEventListener('click', ()=>{
             const currentQuery = window.location.hash.slice(1);
-            const currentParams = createUrlParams(currentQuery);
-            console.log('current params', currentParams);
-            //const newParams = writeToQuery(params, currentQuery);
-            console.log('heyo', favorite.siteId);
-            currentParams.siteId = (currentParams.siteId + ',' + favorite.siteId);
-            const newQuery = writeToQuery(currentParams, currentQuery);
-            console.log('newQuery', newQuery);
+            const newQuery = addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);   
             window.location.hash = newQuery;
         });
-
         favoritesNode.appendChild(dom);
     });
 }

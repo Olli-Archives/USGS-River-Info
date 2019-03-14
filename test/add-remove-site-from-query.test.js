@@ -1,6 +1,6 @@
 import { sliceSitesFromString, addRemoveSiteFromQuery } from '../src/url-functions.js';
 
-const test = QUnit.test
+const test = QUnit.test;
 
 QUnit.module('ADD-REMOVE-SITE.TEST.JS');
 
