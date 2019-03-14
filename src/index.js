@@ -50,9 +50,3 @@ auth.onAuthStateChanged(() => {
         });
 });
 
-
-const logNode = document.getElementById('auth');
-logNode.addEventListener('click', () => {
-    console.log(auth);
-});
-
