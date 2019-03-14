@@ -1,3 +1,6 @@
+import { writeToQuery } from './url-functions.js';
+
+
 export function createFavoriteLi(firebaseObject){
     const html = /*html*/`
     <li>
@@ -11,9 +14,10 @@ export function createFavoriteLi(firebaseObject){
     return template.content;
 }
 
-export default function loadFavorites(firebaseFavorites)
+export default function loadFavorites(firebaseFavorites, currentQuery)
 {
     const favoritesNode = document.getElementById('favorites-ul');
+
 
     while(favoritesNode.children.length > 0){
         console.log('removing extra children');
@@ -25,8 +29,12 @@ export default function loadFavorites(firebaseFavorites)
         console.log('favorite', favorite);
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
-        buttonNode.addEventListener('click', (favorite)=>{
-            console.log('go live with data!!!', favorite);
+        buttonNode.addEventListener('click', ()=>{
+            const currentQuery = window.location.hash.slice(1);
+            const params = { siteId: favorite.siteId };
+            const newParams = writeToQuery(params, currentQuery);
+            console.log('newPArams', newParams);
+            console.log('go live with data!!!', favorite.siteId);
         });
 
         favoritesNode.appendChild(dom);

@@ -6,8 +6,7 @@ export function generateRiverInfo(body, siteId) {
     const variablesOfInterest = [];
     const arrayOfInfo = body.value.timeSeries;
     const filteredBody = arrayOfInfo.filter(array => array.sourceInfo.siteCode[0].value === siteId);
-    console.log('filteredBody', filteredBody);
-   
+ 
     variablesOfInterest.push(filteredBody[0].sourceInfo.siteCode[0].value);
     variablesOfInterest.push(filteredBody[0].sourceInfo.siteName);
   
@@ -31,7 +30,6 @@ export function getListOfSiteIds(fetchBody) {
 }
 
 export function createRiverLiHtml(river) {
-    console.log('river inside createRiverLiHtml', river);
     let innerHtml = '';
     river.forEach(item => {
         innerHtml = innerHtml + `<div>${item}</div>`;
