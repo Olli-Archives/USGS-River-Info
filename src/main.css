@@ -1,6 +1,9 @@
-#river-table li {
-    display:flex;
+ul{
     list-style: none;
+}
+
+#river-table li {
+    display:flex;   
 }
 #river-table div{
     margin:10px;
