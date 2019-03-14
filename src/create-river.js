@@ -12,11 +12,7 @@ export function generateRiverInfo(body, siteId) {
     variablesOfInterest.push(filteredBody[0].sourceInfo.siteName);
   
     filteredBody.forEach(object => {
-      
-        //variablesOfInterest.push(filteredBody[0].sourceInfo.siteName);
-        //variablesOfInterest.push('SITE-ID:');
-        //object.sourceInfo.siteCode[0].value,
-        
+          
         variablesOfInterest.push(`${object.values[0].value[0].value} ${object.variable.unit.unitCode}`);
     });
     return variablesOfInterest;

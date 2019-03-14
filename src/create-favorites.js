@@ -2,7 +2,7 @@ export function createFavoriteLi(firebaseObject){
     const html = /*html*/`
     <li>
         <span>${firebaseObject.locationName}</span>
-        <button>GET LIVE DATA</button>
+        <button class="live-data-btn">GET LIVE DATA</button>
         <button>REMOVE FROM FAVORITES</button>
     </li>
     `;
@@ -24,6 +24,11 @@ export default function loadFavorites(firebaseFavorites)
     favorites.forEach(favorite =>{
         console.log('favorite', favorite);
         const dom = createFavoriteLi(favorite);
+        const buttonNode = dom.querySelector('.live-data-btn');
+        buttonNode.addEventListener('click', (favorite)=>{
+            console.log('go live with data!!!', favorite);
+        });
+
         favoritesNode.appendChild(dom);
     });
 }
