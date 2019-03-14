@@ -83,12 +83,14 @@ export default function renderRiverLi(riverInfo, listOfSites) {
                 if(isFavorite) {        
                     userFavoriteRiverRef.remove();
                     removeFavorite();
+                    location.reload();
                 } else {
                     userFavoriteRiverRef.set({
                         siteId: riverInfo[0],
                         locationName : riverInfo[1]
                     });
                     addFavorite();
+                    location.reload();
                 }
             });
         });
