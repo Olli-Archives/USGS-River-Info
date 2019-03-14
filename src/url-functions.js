@@ -1,11 +1,26 @@
 export function writeToQuery(params, currentQuery) {
-    const query = new URLSearchParams(currentQuery);
-    query.set('format', 'json');
-    query.set('sites', params.siteId ? params.siteId : '');
-    query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
-    query.set('siteType', 'ST');
-    query.set('siteStatus', 'all');
-    return query.toString();
+    //with 0 prev searches,params.siteId leads with null
+    console.log('params', params);
+
+    if (params.siteId) {
+        console.log('query passed to wrtie to query', currentQuery);
+        const query = new URLSearchParams(currentQuery);
+        query.set('format', 'json');
+        query.set('sites', params.siteId);
+        query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
+        query.set('siteType', 'ST');
+        query.set('siteStatus', 'all');
+        return query.toString();
+    }
+    else {
+        console.log('param site id = null');
+        const query = new URLSearchParams();
+        query.set('format', 'json');
+        query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
+        query.set('siteType', 'ST');
+        query.set('siteStatus', 'all');
+        return query.toString();
+    }
 }
 
 export function createURL(params) {
@@ -27,7 +42,7 @@ export function createUrlParams(query) {
     {
         parameterCd: parameterCd,
         siteId: siteId
-    }; 
+    };
     return params;
 }
 
@@ -43,7 +58,7 @@ export function sliceSitesFromString(sites) {
     let endIndex = [];
 
     let slicedSites = [];
-    for(let i = 0; i < numberOfSites; i++) {
+    for (let i = 0; i < numberOfSites; i++) {
         startIndex = (i * 9);
         endIndex = ((i * 9) + 8);
         slicedSites.push(sites.slice(startIndex, endIndex));
@@ -57,20 +72,23 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
     let listOfSites = [];
     if(option === 'add') {
 
-        listOfSites.push(currentUrlParams.siteId);
+        if(currentUrlParams.siteId) {
+            listOfSites.push(currentUrlParams.siteId);
+        }
         listOfSites.push(siteId);
         const newParams = {
             parameterCd: currentUrlParams.parameterCd,
-            siteId: listOfSites
+            siteId: listOfSites ? listOfSites : null
         };
         const newQuery = writeToQuery(newParams, query);
+        console.log('newQuery', newQuery);
         return newQuery;
     }
-    else if(option === 'subtract') {
+    else if (option === 'subtract') {
         //check if site id exists in current query
         const currentSites = currentUrlParams.siteId;
         const includes = currentSites.includes(siteId);
-        if(includes) {
+        if (includes) {
             const slicedSites = sliceSitesFromString(currentSites);
             const newSites = slicedSites.filter(site => site !== siteId.toString());
             const newParams = {
@@ -82,4 +100,6 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
         }
         else {
             console.log('site to be subtraced doesnt exist');
-        }}}
+        }
+    }
+}
