@@ -4,9 +4,8 @@ import { addRemoveSiteFromQuery } from './url-functions.js';
 export function createFavoriteLi(firebaseObject){
     const html = /*html*/`
     <li>
-        <span>${firebaseObject.locationName}</span>
         <button class="live-data-btn">GET LIVE DATA</button>
-        <button>REMOVE FROM FAVORITES</button>
+        <span>${firebaseObject.locationName}</span>
     </li>
     `;
     const template = document.createElement('template');
