@@ -1,4 +1,4 @@
-import { writeToQuery, createURL, createUrlParams } from '../src/url-functions.js';
+import { writeToQuery, createURL, createUrlParams, universalURLSearchParams } from '../src/url-functions.js';
 
 
 
@@ -56,3 +56,14 @@ test('CREATE PARAMS from url #', assert => {
     assert.deepEqual(actual, expected);
 });
 
+test('create universal URLSearchParams, get format', assert => {
+   
+    //arrange
+    const variablesOfInterest = ['format', 'sites'];
+    const query = 'format=json&sites=14301000&parameterCd=00060%2C00065&siteType=ST&siteStatus=all';
+    const expected = { format: 'json', sites: '14301000' };
+    //act
+    const actual = universalURLSearchParams(variablesOfInterest, query);
+    //assert
+    assert.deepEqual(actual, expected);
+});

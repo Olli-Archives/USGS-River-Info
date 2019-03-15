@@ -42,11 +42,10 @@ heightNode.addEventListener('change', () => {
     updateQuery();
     heightNode.checked ? waterParams[1] = '00065' : waterParams[1] = '';
     filterWaterParams();
-
     const params = { parameterCd : filteredWaterParams.toString() };
     const newQuery = writeParameterCdToQuery(params, currenQuery);
     window.location.hash = newQuery;
-});
+});     
 
 tempNode.addEventListener('change', () => {
     updateQuery();
@@ -56,4 +55,6 @@ tempNode.addEventListener('change', () => {
     const newQuery = writeParameterCdToQuery(params, currenQuery);
     window.location.hash = newQuery;
 });
+
+console.log('heightNodeStatus', heightNode.checked);
 

@@ -65,7 +65,7 @@ li{
 #favorites-ul li{
     display:flex;
     margin:20px;
-    font-size:10px;
+    font-size:15px;
 }
 #favorites-ul span{
     flex-grow:1;
@@ -80,11 +80,11 @@ li{
 }
 
 .live-data-btn{
-    color:green;
+    color:lightgreen;
     background-color: #424040;
     border: 1px solid white;
     border-radius: 5px;
-    font-size:12px;
+    font-size:14px;
     margin-right:20px;
 }
 

@@ -1,26 +1,12 @@
 export function writeToQuery(params, currentQuery) {
-    //with 0 prev searches,params.siteId leads with null
-    console.log('params', params);
-
-    if (params.siteId) {
-        console.log('query passed to wrtie to query', currentQuery);
-        const query = new URLSearchParams(currentQuery);
-        query.set('format', 'json');
-        query.set('sites', params.siteId);
-        query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
-        query.set('siteType', 'ST');
-        query.set('siteStatus', 'all');
-        return query.toString();
-    }
-    else {
-        console.log('param site id = null');
-        const query = new URLSearchParams();
-        query.set('format', 'json');
-        query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
-        query.set('siteType', 'ST');
-        query.set('siteStatus', 'all');
-        return query.toString();
-    }
+    //with 0 prev searches,params.siteId leads with null0
+    const query = new URLSearchParams(currentQuery);
+    query.set('format', 'json');
+    query.set('sites', params.siteId);
+    query.set('siteType', 'ST');
+    query.set('siteStatus', 'all');
+    query.set('parameterCd', params.parameterCd ? params.parameterCd : '00060');
+    return query.toString();
 }
 
 export function createURL(params) {
@@ -45,6 +31,16 @@ export function createUrlParams(query) {
     };
     return params;
 }
+export function universalURLSearchParams(variablesOfInterest, query){
+    const results = {};
+    const paramGetter = new URLSearchParams(query);
+    variablesOfInterest.forEach(variable => {
+        const value = paramGetter.get(variable);
+    
+        results[variable] = value;
+    });
+    return results;  
+}
 
 export function writeParameterCdToQuery(params, currentQuery) {
     const query = new URLSearchParams(currentQuery);
@@ -68,11 +64,12 @@ export function sliceSitesFromString(sites) {
 
 export function addRemoveSiteFromQuery(option, siteId, query) {
     const currentUrlParams = createUrlParams(query);
+    console.log('current url params', currentUrlParams);
 
     let listOfSites = [];
-    if(option === 'add') {
+    if (option === 'add') {
 
-        if(currentUrlParams.siteId) {
+        if (currentUrlParams.siteId) {
             listOfSites.push(currentUrlParams.siteId);
         }
         listOfSites.push(siteId);
@@ -81,7 +78,7 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
             siteId: listOfSites ? listOfSites : null
         };
         const newQuery = writeToQuery(newParams, query);
-        console.log('newQuery', newQuery);
+
         return newQuery;
     }
     else if (option === 'subtract') {
@@ -99,7 +96,7 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
             return newQuery;
         }
         else {
-            console.log('site to be subtraced doesnt exist');
+            return;
         }
     }
 }
