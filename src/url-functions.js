@@ -19,17 +19,7 @@ export function createURL(params) {
     return ApiURL.toString();
 }
 
-export function createUrlParams(query) {
-    const UrlParams = new URLSearchParams(query);
-    const siteId = UrlParams.get('sites');
-    const parameterCd = UrlParams.get('parameterCd');
-    const params =
-    {
-        parameterCd: parameterCd,
-        siteId: siteId
-    };
-    return params;
-}
+
 export function universalURLSearchParams(variablesOfInterest, query){
     const results = {};
     const paramGetter = new URLSearchParams(query);
