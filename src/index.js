@@ -1,5 +1,5 @@
 import renderRiverLi, { getListOfSiteIds, generateRiverInfo } from '../src/create-river.js';
-import { createURL, createUrlParams } from './url-functions.js';
+import { createURL, universalURLSearchParams } from './url-functions.js';
 import './search-interface.js';
 import { auth, favoritesByUserRef } from '../firebase/firebase.js';
 import createHeader from './shared/create-header.js';
@@ -11,7 +11,7 @@ let query = null;
 
 function loadList() {
     query = window.location.hash.slice(1);
-    const params = createUrlParams(query);
+    const params = universalURLSearchParams(['sites', 'parameterCd'], query);
     const apiURL = createURL(params);
 
     if(!query) {

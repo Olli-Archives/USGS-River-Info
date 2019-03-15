@@ -1,5 +1,4 @@
 export function writeToQuery(params, currentQuery) {
-    //with 0 prev searches,params.siteId leads with null0
     const query = new URLSearchParams(currentQuery);
     query.set('format', 'json');
     query.set('sites', params.siteId);
@@ -13,7 +12,7 @@ export function createURL(params) {
     const URL_BASE = 'https://waterservices.usgs.gov/nwis/iv/?';
     const ApiURL = new URL(URL_BASE);
     ApiURL.searchParams.set('format', 'json');
-    ApiURL.searchParams.set('sites', params.siteId);
+    ApiURL.searchParams.set('sites', params.sites);
     ApiURL.searchParams.set('parameterCd', params.parameterCd);
     ApiURL.searchParams.set('siteType', 'ST');
     ApiURL.searchParams.set('siteStatus', 'all');
@@ -63,14 +62,13 @@ export function sliceSitesFromString(sites) {
 }
 
 export function addRemoveSiteFromQuery(option, siteId, query) {
-    const currentUrlParams = createUrlParams(query);
-    console.log('current url params', currentUrlParams);
-
+ 
+    const currentUrlParams = universalURLSearchParams(['sites', 'parameterCd'], query);
     let listOfSites = [];
     if (option === 'add') {
 
-        if (currentUrlParams.siteId) {
-            listOfSites.push(currentUrlParams.siteId);
+        if (currentUrlParams.sites) {
+            listOfSites.push(currentUrlParams.sites);
         }
         listOfSites.push(siteId);
         const newParams = {
@@ -82,7 +80,6 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
         return newQuery;
     }
     else if (option === 'subtract') {
-        //check if site id exists in current query
         const currentSites = currentUrlParams.siteId;
         const includes = currentSites.includes(siteId);
         if (includes) {
