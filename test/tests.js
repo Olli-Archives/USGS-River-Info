@@ -4,3 +4,4 @@ import './url-functions.test.js';
 import './create-header.test.js';
 import './create-favorites.test.js';
 import './add-remove-site-from-query.test.js';
+import './sidebar-item-template.test.js';

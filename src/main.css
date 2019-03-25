@@ -117,3 +117,29 @@ li{
     background-color: aqua;
 }
 
+#main {
+display: flex;
+}
+ #side-bar{
+     width: 150px;
+     background-color: #424040
+ }
+ #main{
+     background-color: blue;
+ 
+ }
+
+#side-bar div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#side-bar img{
+    display:flex;
+}
+
+ #side-bar img{
+     width:100px;
+ }
+

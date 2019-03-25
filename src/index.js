@@ -4,6 +4,11 @@ import './search-interface.js';
 import { auth, favoritesByUserRef } from '../firebase/firebase.js';
 import createHeader from './shared/create-header.js';
 import loadFavorites from './create-favorites.js';
+import renderSidebarItems from './sidebar-item-template.js';
+
+
+
+
 
 createHeader();
 
