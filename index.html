@@ -16,51 +16,50 @@
 
 <body>
     <div id='header-container'></div>
-    <section id="main">
-        <section id="side-bar">
-            <div>
-                <img src="http://www.mmcgeorgia.org/wp-content/uploads/2018/05/Very-Basic-Search-icon.png">
-                <p>Find River</p>
-            </div>
-            <div>
-                <img src="http://www.mmcgeorgia.org/wp-content/uploads/2018/05/Very-Basic-Search-icon.png">
-                <p>Find River</p>
-            </div>
-            <div>
-                <img src="http://www.mmcgeorgia.org/wp-content/uploads/2018/05/Very-Basic-Search-icon.png">
-                <p>Find River</p>
-            </div>
-
-        </section>
-
         <section id="main">
+            <section id="side-bar"></section>
+            <section  class="hidden" id="find-a-river">
+                <h2>Find A River By Sit ID</h2>
+                    <form>
+                        <input id="site-id" placeholder="USGS SITE ID">
+                        <button id="submit-site-id">Submit New Site</button>
+                    </form>    
+                    <p>Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit. Dicta ducimus animi asperiores
+                    facere aperiam aut labore quisquam laudantium.
+                    Dolorem quo cum sapiente ipsa voluptate ipsum
+                    quis magnam ea, iste quae illo impedit,
+                    perspiciatis, nisi corrupti dolor facere eum
+                    qui eius modi reprehenderit asperiores?
+                    Incidunt cupiditate maiores delectus aliquid
+                    atque? Tempora beatae nesciunt cupiditate
+                    doloremque? Debitis amet recusandae enim neque
+                    temporibus voluptas praesentium, a hic placeat
+                    consequuntur aperiam obcaecati explicabo nam consequatur
+                    ectetur molestias. Dignissimos cupiditate dolorum aspernatur,
+                    eveniet molestiae ipsam.
+                    </p>
+            </section>
+            <section class="hidden" id="fave-rivers">
+                <h2>Your Favorite Rivers</h2>
+                <ul id="favorites-ul"></ul>
+            </section>
+            <section class="hidden" id="search-params">
+                <h2>Search Parameters</h2>
+                <form class="top-form">
+                        <input id="checkbox-height" type="checkbox" autocomplete="off">River Height (ft)</checkbox>
+                        <input id="checkbox-temp" type="checkbox" autocomplete="off">WaterTemp (C)</checkbox>
+                        <p>Chose additional parameters to display</p>
+                </form>
+            </section>
+            <section id="live-data">
+                <h2>Live Data</h2>
+                <ul id="river-table"></ul>
+
+            </section>
+               
+
         </section>
-    </section>
-
-
-    <div id="search-params">
-        <form class="top-form">
-            <h2>Get Live River Data By Site Id</h2>
-            <input id="site-id" placeholder="USGS SITE ID">
-            <button id="submit-site-id">Submit New Site</button>
-        </form>
-        <form class="top-form">
-            <h2>Choose Additional Parameters To Display</h2>
-            <input id="checkbox-height" type="checkbox" autocomplete="off">River Height (ft)</checkbox>
-            <input id="checkbox-temp" type="checkbox" autocomplete="off">WaterTemp (C)</checkbox>
-        </form>
-    </div>
-    <div id="fave-rivers">
-        <h2>Your Favorite Rivers</h2>
-        <ul id="favorites-ul">
-        </ul>
-    </div>
-    <div id="live-data">
-        <h2>Live Data</h2>
-        <button id="clear-results">CLEAR RESULTS</button>
-        <ul id="river-table">
-            </table>
-    </div>
 
     <script type="module" src="src/index.js"></script>
 

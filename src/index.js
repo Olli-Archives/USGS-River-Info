@@ -5,11 +5,12 @@ import { auth, favoritesByUserRef } from '../firebase/firebase.js';
 import createHeader from './shared/create-header.js';
 import loadFavorites from './create-favorites.js';
 import renderSidebarItems from './sidebar-item-template.js';
+import sidebarItems from '../data/sidbar-items.js';
 
 
 
 
-
+renderSidebarItems(sidebarItems);
 createHeader();
 
 let query = null;
@@ -59,3 +60,4 @@ clearReultsButton.addEventListener('click', ()=>{
     window.location.hash = '';
     location.reload();
 });
+
