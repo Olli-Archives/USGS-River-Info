@@ -15,15 +15,17 @@ export default function renderSidebarItems(items) {
     const data = document.getElementById('live-data');
 
     items.forEach(item => {
-        itemIds.push(item.section);
-
+        if(item.section){
+            itemIds.push(item.section);
+        }
 
         const navItem = createSideBarItem(item);
         const div = navItem.querySelector('div');
         div.addEventListener('click', () => {
             const section = document.getElementById(item.section);
-            if(section.className === 'hidden') {
+            if(section && section.className === 'hidden') {
                 section.classList.remove('hidden');
+                console.log('item IDs', itemIds);
                 const otherIds = itemIds.filter(id => id !== item.section);
                 otherIds.forEach(id => {
                     console.log('filteted id', id);
@@ -33,9 +35,20 @@ export default function renderSidebarItems(items) {
        
                 });
             }
-            else {
+            else if(section) {
                 section.classList.add('hidden');
                 data.classList.remove('hidden');
+            }
+            if(!section){
+                console.log('no section');
+                itemIds.forEach(id => {
+                    console.log('filteted id', id);
+                    const section = document.getElementById(id);
+                    section.classList.add('hidden');
+                    data.classList.remove('hidden');
+       
+                });
+
             }
         });
         itemsContainer.appendChild(navItem);

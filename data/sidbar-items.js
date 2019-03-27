@@ -13,5 +13,12 @@ export default [
         src: 'https://cdn4.iconfinder.com/data/icons/credit-card-payments/48/98-512.png',
         p: 'PARAMS',
         section: 'search-params'
+    },
+    {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Toicon-icon-blueprint-live.svg/1024px-Toicon-icon-blueprint-live.svg.png',
+        p: 'LIVE DATA',
+        
     }
+
+
 ];
