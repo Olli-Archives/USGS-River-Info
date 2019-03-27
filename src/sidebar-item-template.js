@@ -31,7 +31,7 @@ export default function renderSidebarItems(items) {
                     console.log('filteted id', id);
                     const section = document.getElementById(id);
                     section.classList.add('hidden');
-                    data.classList.add('hidden');
+                    //data.classList.add('hidden');
        
                 });
             }
