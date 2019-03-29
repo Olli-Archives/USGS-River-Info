@@ -1,5 +1,5 @@
 export function createSideBarItem(item) {
-    console.log('item', item.fontAwesomeClass);
+
     const template = document.createElement('template');
     const html = /*html*/
         `<div>
@@ -27,13 +27,13 @@ export default function renderSidebarItems(items) {
             const section = document.getElementById(item.section);
             if(section && section.className === 'hidden') {
                 section.classList.remove('hidden');
-                console.log('item IDs', itemIds);
+              
                 const otherIds = itemIds.filter(id => id !== item.section);
                 otherIds.forEach(id => {
-                    console.log('filteted id', id);
+                 
                     const section = document.getElementById(id);
                     section.classList.add('hidden');
-                    //data.classList.add('hidden');
+                
        
                 });
             }
@@ -42,9 +42,9 @@ export default function renderSidebarItems(items) {
                 data.classList.remove('hidden');
             }
             if(!section){
-                console.log('no section');
+
                 itemIds.forEach(id => {
-                    console.log('filteted id', id);
+  
                     const section = document.getElementById(id);
                     section.classList.add('hidden');
                     data.classList.remove('hidden');

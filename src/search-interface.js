@@ -56,5 +56,5 @@ tempNode.addEventListener('change', () => {
     window.location.hash = newQuery;
 });
 
-console.log('heightNodeStatus', heightNode.checked);
+
 

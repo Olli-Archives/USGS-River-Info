@@ -1,5 +1,3 @@
-const searchIcon = 'fas' + '\xa0' + 'fa-search';
-console.log('search icon', searchIcon);
 
 
 

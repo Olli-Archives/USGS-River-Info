@@ -1,4 +1,5 @@
-import { addRemoveSiteFromQuery } from './url-functions.js';
+import { addRemoveSiteFromQuery, universalURLSearchParams, sliceSitesFromString } from './url-functions.js';
+
 
 
 export function createFavoriteLi(firebaseObject){
@@ -25,14 +26,42 @@ export default function loadFavorites(firebaseFavorites)
     const favorites = Object.values(firebaseFavorites);
     favorites.forEach(favorite =>{
        
-        console.log('favorite', favorite);
+       
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
         buttonNode.addEventListener('click', ()=>{
-            console.log('live data button hit');
             const currentQuery = window.location.hash.slice(1);
-            const newQuery = addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);   
-            window.location.hash = newQuery;
+            const params = universalURLSearchParams(['sites', 'parameterCd'], currentQuery);
+            console.log('site to add or remove', favorite.siteId);
+            console.log('parameters from query', params);
+
+            if(params.sites.includes(favorite.siteId)){
+               // const slicedSites = sliceSitesFromString(params.sites);
+                //console.log('****************site exists in query');
+                //const newSites = slicedSites.filter(site => site !== favorite.siteId);
+                //console.log('filtered', favorite.siteId, 'from sites', newSites);
+                const newQuery = addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);   
+                window.location.hash = newQuery;
+                console.log('new removed query isssss', newQuery);
+                console.log('favorite site id', favorite.siteId);
+
+            }
+            else
+            {
+                console.log('********site not in query');
+                const newQuery = addRemoveSiteFromQuery('add', favorite.siteId, currentQuery); 
+                console.log('new  added query isssss', newQuery); 
+
+                window.location.hash = newQuery;
+            }
+            //if(params.includes())
+
+
+            //console.log('live data button hit');
+            //const currentQuery = window.location.hash.slice(1);
+            //console.log('currentQuery', currentQuery);
+            //const newQuery = addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);   
+            //window.location.hash = newQuery;
         });
         favoritesNode.appendChild(dom);
     });

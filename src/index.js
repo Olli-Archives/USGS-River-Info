@@ -14,6 +14,8 @@ renderSidebarItems(sidebarItems);
 createHeader();
 
 let query = null;
+let displayedRiversBySiteId=[];
+
 
 function loadList() {
     query = window.location.hash.slice(1);
@@ -28,8 +30,9 @@ function loadList() {
         .then(response => response.json())
         .then(body => {
             const listOfSites = getListOfSiteIds(body);
+            
             listOfSites.forEach(siteId => {
-                //relocate riverIfno         
+                displayedRiversBySiteId.push(siteId);       
                 const riverInfo = generateRiverInfo(body, siteId);
                 renderRiverLi(riverInfo, listOfSites);
             });
@@ -53,11 +56,13 @@ auth.onAuthStateChanged(() => {
 });
 
 //clear results 
-const clearReultsButton = document.getElementById('clear-results');
+//const clearReultsButton = document.getElementById('clear-results');
 
-clearReultsButton.addEventListener('click', ()=>{
-    event.preventDefault();
-    window.location.hash = '';
-    location.reload();
-});
+//clearReultsButton.addEventListener('click', ()=>{
+   // event.preventDefault();
+  //  window.location.hash = '';
+  //  location.reload();
+//});
+
+
 

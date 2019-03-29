@@ -21,14 +21,17 @@ export function createURL(params) {
 
 
 export function universalURLSearchParams(variablesOfInterest, query){
+    console.log('varaibles of intrest', variablesOfInterest);
     const results = {};
     const paramGetter = new URLSearchParams(query);
     variablesOfInterest.forEach(variable => {
         const value = paramGetter.get(variable);
     
         results[variable] = value;
+        console.log('results', results); 
     });
-    return results;  
+    return results;
+ 
 }
 
 export function writeParameterCdToQuery(params, currentQuery) {
@@ -52,6 +55,8 @@ export function sliceSitesFromString(sites) {
 }
 
 export function addRemoveSiteFromQuery(option, siteId, query) {
+
+    console.log('option', option);
  
     const currentUrlParams = universalURLSearchParams(['sites', 'parameterCd'], query);
     let listOfSites = [];
@@ -70,7 +75,9 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
         return newQuery;
     }
     else if (option === 'subtract') {
-        const currentSites = currentUrlParams.siteId;
+        console.log('removing site');
+        console.log('curent sites looking for.siteid', currentUrlParams);
+        const currentSites = currentUrlParams.sites;
         const includes = currentSites.includes(siteId);
         if (includes) {
             const slicedSites = sliceSitesFromString(currentSites);
