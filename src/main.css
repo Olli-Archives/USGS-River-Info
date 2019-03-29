@@ -1,3 +1,7 @@
+html{
+    box-sizing: border-box;
+}
+
 a{
     color:pink;
     text-decoration: none;
@@ -12,6 +16,7 @@ body{
     padding:0;
 }
 
+
 header{
     display:flex;
     flex-grow:1;
@@ -20,8 +25,8 @@ header{
 }
 header img{
     margin:5px;
-    width:70px;
-    height:70px;
+    width:60px;
+    height:60px;
     
 }
 .profile button{
@@ -59,21 +64,19 @@ li{
 
 
 #header-container{
-    height: 150px;
-    display:flex;
+    height: 100px;
+    display: flex;
     background: url('../data/bg.jpg');
 }
 
 
 
 
-
-
-
 #header-container img{
-    height:140px;
-    width:140px;
-    margin-right:40px;
+    height: 100px;
+    width: 100px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 #header-container header{
     display:flex;
@@ -81,7 +84,9 @@ li{
     flex-direction:row;
 }
 #header-container h1{
-    flex-grow:1;
+    flex-grow: 1;
+    margin-left: 0;
+    font-size: 70px;
 }
 
 .favorite-star{
@@ -111,11 +116,13 @@ li{
 }
 
 .live-data-btn{
-    color:lightgreen;
-    border: 1px solid white;
+    color:#252D2F;
+    border: 1px solid black;
     border-radius: 5px;
     font-size:14px;
     margin-right:20px;
+    background-color: #d13e41;
+    cursor: pointer;
 }
 
 #data-table{
@@ -158,13 +165,16 @@ background-repeat: no-repeat;
 
 
 
-min-height: calc(100vh - 225px);
+min-height: calc(100vh - 175px);
 }
  #side-bar{
+     box-sizing: border-box;
+
      display: flex;
      justify-content: space-around;
      flex-direction: column;
-     min-width: 150px;    
+     min-width: 150px;   
+     border-right:1px solid lightgrey; 
  }
 
 #side-bar div{
@@ -178,10 +188,11 @@ min-height: calc(100vh - 225px);
     color:gold;
 }
 
-#side-bar img{
+#side-bar i{
     display:flex;
     color:white;
-    width:50px;
+    font-size:40px
+
 }
 
  #find-a-river{

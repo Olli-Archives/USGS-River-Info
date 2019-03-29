@@ -1,21 +1,31 @@
+const searchIcon = 'fas' + '\xa0' + 'fa-search';
+console.log('search icon', searchIcon);
+
+
+
 export default [
     {
-        src: 'http://www.mmcgeorgia.org/wp-content/uploads/2018/05/Very-Basic-Search-icon.png',
+        prefix: 'fas',
+        suffix: 'fa-search',
         p: 'FIND RIVER',
         section: 'find-a-river'
     },
     {
-        src: 'https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_18-512.png',
+        prefix: 'far',
+        suffix: 'fa-star',
         p: 'FAVORITES',
         section: 'fave-rivers'
     },
     {
-        src: 'https://cdn4.iconfinder.com/data/icons/credit-card-payments/48/98-512.png',
+        prefix: 'fas',
+        suffix: 'fa-cogs',
         p: 'PARAMS',
         section: 'search-params'
     },
     {
-        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Toicon-icon-blueprint-live.svg/1024px-Toicon-icon-blueprint-live.svg.png',
+        prefix: 'fas',
+        suffix: 'fa-chart-line',
+        fontAwesomeClass: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Toicon-icon-blueprint-live.svg/1024px-Toicon-icon-blueprint-live.svg.png',
         p: 'LIVE DATA',
         
     }

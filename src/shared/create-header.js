@@ -2,8 +2,7 @@
 
 import { auth } from '../../firebase/firebase.js';
 
-export function createAuthHeaderComponent(user) {
-    console.log('passed in user', user);
+export function createAuthHeaderComponent(user){
     const template = document.createElement('template');
     const html = `
     <div class="profile">
@@ -20,7 +19,7 @@ export function createNoUserHeader() {
     const html = /*html*/`
     <header>
         <img src='../data/logo.svg'>
-        <h1>My River Info</h1>
+        <h1>MY RIVER DATA</h1>
     </header>
     `;
     template.innerHTML = html;
@@ -48,7 +47,7 @@ export default function createHeader(options) {
             });
             header.appendChild(userDom);      
         }
-        else{
+        else {
             window.location = './auth.html' + window.location.hash;
         }
     });

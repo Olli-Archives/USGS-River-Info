@@ -1,8 +1,10 @@
 export function createSideBarItem(item) {
+    console.log('item', item.fontAwesomeClass);
     const template = document.createElement('template');
     const html = /*html*/
         `<div>
-            <img src=${item.src}>
+        <i class="fas ${item.suffix}"></i>
+           
             <p>${item.p}</p> </div>
     `;
     template.innerHTML = html;

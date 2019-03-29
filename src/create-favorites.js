@@ -19,7 +19,6 @@ export default function loadFavorites(firebaseFavorites)
 
 
     while(favoritesNode.children.length > 0){
-        console.log('removing extra children');
         favoritesNode.firstChild.remove();
     }
 
@@ -30,6 +29,7 @@ export default function loadFavorites(firebaseFavorites)
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
         buttonNode.addEventListener('click', ()=>{
+            console.log('live data button hit');
             const currentQuery = window.location.hash.slice(1);
             const newQuery = addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);   
             window.location.hash = newQuery;
