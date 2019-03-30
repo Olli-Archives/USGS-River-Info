@@ -19,7 +19,6 @@ export default function loadFavorites(firebaseFavorites)
 {
     const favoritesNode = document.getElementById('favorites-ul');
 
-
     while(favoritesNode.children.length > 0){
         favoritesNode.firstChild.remove();
     }
@@ -41,12 +40,13 @@ export default function loadFavorites(firebaseFavorites)
                 }
                 else if(riverTableNode.children.length > 0)
                 {
-                    riverTableNode.removeChild(riverTableNode.firstChild);  
+                    riverTableNode.removeChild(riverTableNode.firstChild);
+                    addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);    
+
                 }
             }
             else
             {
-                console.log('side id not in system,adding to query params are2@@:::', favorite.siteId, currentQuery);
                 addRemoveSiteFromQuery('add', favorite.siteId, currentQuery); 
             }
         });

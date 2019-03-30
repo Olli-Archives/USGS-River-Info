@@ -20,18 +20,18 @@ export function createURL(params) {
 }
 
 
-export function universalURLSearchParams(variablesOfInterest, query){
+export function universalURLSearchParams(variablesOfInterest, query) {
     console.log('varaibles of intrest', variablesOfInterest);
     const results = {};
     const paramGetter = new URLSearchParams(query);
     variablesOfInterest.forEach(variable => {
         const value = paramGetter.get(variable);
-    
+
         results[variable] = value;
-        console.log('results', results); 
+        console.log('results', results);
     });
     return results;
- 
+
 }
 
 export function writeParameterCdToQuery(params, currentQuery) {
@@ -57,11 +57,10 @@ export function sliceSitesFromString(sites) {
 export function addRemoveSiteFromQuery(option, siteId, query) {
 
     console.log('option', option);
- 
+
     const currentUrlParams = universalURLSearchParams(['sites', 'parameterCd'], query);
     let listOfSites = [];
     if (option === 'add') {
-
         if (currentUrlParams.sites) {
             listOfSites.push(currentUrlParams.sites);
         }
@@ -72,7 +71,6 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
         };
         const newQuery = writeToQuery(newParams, query);
         window.location.hash = newQuery;
-     
     }
     else if (option === 'subtract') {
         console.log('removing site');
@@ -86,9 +84,11 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
                 parameterCd: currentUrlParams.parameterCd,
                 siteId: newSites.toString()
             };
-            const newQuery = writeToQuery(newParams, query);
-            window.location.hash = newQuery;
-    
+            if (newParams.siteId !== '66') {
+                const newQuery = writeToQuery(newParams, query);
+                window.location.hash = newQuery;
+            }
+
         }
         else {
             return;
