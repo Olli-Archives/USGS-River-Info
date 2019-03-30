@@ -31,7 +31,7 @@ submitSiteIdNode.addEventListener('click', event => {
     updateQuery();
     const siteId = siteInputNode.value;
     const newQuery = addRemoveSiteFromQuery('add', siteId, currenQuery);
-    window.location.hash = newQuery;
+    //window.location.hash = newQuery;
 });
 
 

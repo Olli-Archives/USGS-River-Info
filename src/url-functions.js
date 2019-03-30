@@ -71,8 +71,8 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
             siteId: listOfSites ? listOfSites : null
         };
         const newQuery = writeToQuery(newParams, query);
-
-        return newQuery;
+        window.location.hash = newQuery;
+     
     }
     else if (option === 'subtract') {
         console.log('removing site');
@@ -87,7 +87,8 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
                 siteId: newSites.toString()
             };
             const newQuery = writeToQuery(newParams, query);
-            return newQuery;
+            window.location.hash = newQuery;
+    
         }
         else {
             return;
