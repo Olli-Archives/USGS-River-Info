@@ -1,11 +1,17 @@
 import { addRemoveSiteFromQuery, universalURLSearchParams } from './url-functions.js';
 
+let params;
+let currentQuery;
+function updateParams() {
+    currentQuery = window.location.hash.slice(1);
+    params = universalURLSearchParams(['sites', 'parameterCd'], currentQuery);
+}
 
+export function createFavoriteLi(firebaseObject) {
 
-export function createFavoriteLi(firebaseObject){
     const html = /*html*/`
     <li>
-        <button class="live-data-btn">GET LIVE DATA</button>
+        <button id=${firebaseObject.siteId} class="live-data-btn">GET LIVE DATA</button>
         <span>${firebaseObject.locationName}</span>
     </li>
     `;
@@ -14,42 +20,47 @@ export function createFavoriteLi(firebaseObject){
     return template.content;
 }
 
-
-export default function loadFavorites(firebaseFavorites)
-{
+export default function loadFavorites(firebaseFavorites) {
     const favoritesNode = document.getElementById('favorites-ul');
 
-    while(favoritesNode.children.length > 0){
+    while(favoritesNode.children.length > 0) {
         favoritesNode.firstChild.remove();
     }
 
     const favorites = Object.values(firebaseFavorites);
-    favorites.forEach(favorite =>{
-          
+
+    favorites.forEach(favorite => {
+        updateParams();
+
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
-        buttonNode.addEventListener('click', ()=>{
-            const currentQuery = window.location.hash.slice(1);
-            const params = universalURLSearchParams(['sites', 'parameterCd'], currentQuery);
+        buttonNode.addEventListener('click', () => {
+            updateParams();
+   
 
-            if(params.sites.includes(favorite.siteId)){
+
+            if(params && params.sites && params.sites.includes(favorite.siteId)) {
                 const riverTableNode = document.getElementById('river-table');
-                if(riverTableNode.children.length > 1)
-                {
-                    addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);   
+                if(riverTableNode.children.length > 1) {
+                    addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
                 }
-                else if(riverTableNode.children.length > 0)
-                {
+                else if(riverTableNode.children.length > 0) {
                     riverTableNode.removeChild(riverTableNode.firstChild);
-                    addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);    
+                    addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
+                    const button = document.getElementById(favorite.siteId);
+                    button.classList.remove('live');
 
                 }
             }
-            else
-            {
-                addRemoveSiteFromQuery('add', favorite.siteId, currentQuery); 
-            }
+            else {
+                addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);
+            }     
         });
         favoritesNode.appendChild(dom);
+        if(params.sites.includes(favorite.siteId)) {
+            const button = document.getElementById(favorite.siteId);
+            button.classList.add('live');
+        }
     });
 }
+

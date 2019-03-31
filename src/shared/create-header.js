@@ -6,7 +6,7 @@ export function createAuthHeaderComponent(user){
     const template = document.createElement('template');
     const html = `
     <div class="profile">
-        <span>Welcome ${user.displayName}</span>
+        <span class="user">Welcome ${user.displayName}</span>
         <button>Sign Out</button>
     </div>
     `;
@@ -18,7 +18,6 @@ export function createNoUserHeader() {
     const template = document.createElement('template');
     const html = /*html*/`
     <header>
-        <img src='../data/logo.svg'>
         <h1>MY RIVER DATA</h1>
     </header>
     `;

@@ -6,7 +6,8 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./src/main.css">
     <meta charset="UTF-8">
@@ -39,18 +40,21 @@
                 </p>
                 <p>
                     If you are not familiar with USGS site IDs, they can all be found here <a
-                    href="https://www.USGS.gov" target="blank">USGS</a>. While
+                        href="https://www.USGS.gov" target="blank">USGS</a>. While
                     the USGS site is not the easiest to navigate I have allways had better luck search for the USGS site
                     IDs using google. For example if
                     you are looking for the site ID for the Dechuttes river, you could google the following "Dechuttes
                     USGS site ID".
                 </p>
                 <p>
-                    Once you are displaying all the rivers that you want to look at, you can toggle over from the side bar
-                    to the "PARAMS" and chose what parameters you want to look at.   
+                    Once you are displaying all the rivers that you want to look at, you can toggle over from the side
+                    bar
+                    to the "PARAMS" and chose what parameters you want to look at.
 
-                    If you have a river that you know you will like to get information from in the future, you can add the river
-                    to your favorites by clicking the star symbol.  Now you can just go over to the "FAVORITES" on the side bar and 
+                    If you have a river that you know you will like to get information from in the future, you can add
+                    the river
+                    to your favorites by clicking the star symbol. Now you can just go over to the "FAVORITES" on the
+                    side bar and
                     chose which rivers you want to see displayed.
                 </p>
             </section>
@@ -68,16 +72,16 @@
             </section>
             <fieldset>
 
-                    <legend style="border: 1px white solid;margin-left: 1em; padding: 0.2em 0.8em ">Live Data</legend>
-                    
-                    <section id="live-data">
-                            <ul id="river-table"></ul>
-                    </section>
+                <legend style="border: 1px white solid;margin-left: 1em; padding: 0.2em 0.8em ">Live Data</legend>
+
+                <section id="live-data">
+                    <ul id="river-table"></ul>
+                </section>
             </fieldset>
         </section>
     </section>
-  
-   
+
+
 
     <script type="module" src="src/index.js"></script>
 
@@ -85,7 +89,11 @@
 </body>
 
 <footer>
-    <p>Created by SteelFaceDesigns 2019</p>
+    <p id="credit">POWERED BY USGS</p>
+    <div>
+        <img src='../data/logo.svg'>
+        <p>SteelFace Designs</p>
+    </div>
 </footer>
 
 </html>
