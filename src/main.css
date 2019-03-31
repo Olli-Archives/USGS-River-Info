@@ -238,6 +238,7 @@ min-height: calc(100vh - 175px);
     flex-grow: 1;
     flex-direction: column;
     padding-right: 20px;
+    padding-left:20px;
 }
 
 fieldset{
@@ -284,4 +285,8 @@ footer div{
     margin-left: auto;
     display:flex;
     flex-direction:column;
+}
+
+#empty-table-message{
+    text-transform: uppercase;
 }

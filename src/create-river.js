@@ -88,16 +88,15 @@ export default function renderRiverLi(riverInfo, listOfSites) {
                     locationName: riverInfo[1]
                 });
                 addFavorite();
-
             }
         });
     });
-    
+
     riverTableNode.appendChild(dom);
     console.log('riverTableNode.lenght', riverTableNode.children.length);
     if(riverTableNode.length !== 0) {
-        const liveContainer = document.getElementById('live-container');
-        liveContainer.classList.remove('hidden');
+        const emptyTableMessage = document.getElementById('empty-table-message');
+        emptyTableMessage.classList.add('hidden');
     }
 
 }
