@@ -52,8 +52,6 @@ table{
 }
 
 li{
-    
-    letter-spacing: 1.2;
     font-family: sans-serif;
 }
 
@@ -77,6 +75,7 @@ li{
 }
 #header-container .user{
     text-transform: uppercase;
+    margin-right:10px;
 }
 
 .favorite-star{
@@ -95,6 +94,7 @@ li{
 }
 #favorites-ul span{
     flex-grow:1;
+    padding-top:2px;
 }
 #favorites-ul .live{
     background-color: lime;
@@ -117,6 +117,7 @@ li{
     margin-right:20px;
     background-color: #d13e41;
     cursor: pointer;
+    padding: 1px 7px;
 }
 
 #data-table{

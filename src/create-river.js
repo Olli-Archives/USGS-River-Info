@@ -94,11 +94,19 @@ export default function renderRiverLi(riverInfo, listOfSites) {
     });
 
 
-
     riverTableNode.appendChild(dom);//dom may change to modified var
+    const liveContainer = document.getElementById('live-container');
+    console.log('rivertablechildren!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', riverTableNode.children.length);
+    if(riverTableNode.children.length === 0){
 
-
+        liveContainer.classList.add('hidden');  
+    }
+    else
+    {
+        liveContainer.classList.remove('hidden');
+    }
 }
+
 
 
 

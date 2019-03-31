@@ -2,6 +2,8 @@ import { addRemoveSiteFromQuery, universalURLSearchParams } from './url-function
 
 let params;
 let currentQuery;
+const favoritesNode = document.getElementById('favorites-ul');
+
 function updateParams() {
     currentQuery = window.location.hash.slice(1);
     params = universalURLSearchParams(['sites', 'parameterCd'], currentQuery);
@@ -11,7 +13,7 @@ export function createFavoriteLi(firebaseObject) {
 
     const html = /*html*/`
     <li>
-        <button id=${firebaseObject.siteId} class="live-data-btn">GET LIVE DATA</button>
+        <button id=${firebaseObject.siteId} class="live-data-btn">LIVE DATA</button>
         <span>${firebaseObject.locationName}</span>
     </li>
     `;
@@ -21,9 +23,9 @@ export function createFavoriteLi(firebaseObject) {
 }
 
 export default function loadFavorites(firebaseFavorites) {
-    const favoritesNode = document.getElementById('favorites-ul');
 
-    while(favoritesNode.children.length > 0) {
+
+    while (favoritesNode.children.length > 0) {
         favoritesNode.firstChild.remove();
     }
 
@@ -36,15 +38,15 @@ export default function loadFavorites(firebaseFavorites) {
         const buttonNode = dom.querySelector('.live-data-btn');
         buttonNode.addEventListener('click', () => {
             updateParams();
-   
 
 
-            if(params && params.sites && params.sites.includes(favorite.siteId)) {
+
+            if (params && params.sites && params.sites.includes(favorite.siteId)) {
                 const riverTableNode = document.getElementById('river-table');
-                if(riverTableNode.children.length > 1) {
+                if (riverTableNode.children.length > 1) {
                     addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
                 }
-                else if(riverTableNode.children.length > 0) {
+                else if (riverTableNode.children.length > 0) {
                     riverTableNode.removeChild(riverTableNode.firstChild);
                     addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
                     const button = document.getElementById(favorite.siteId);
@@ -54,13 +56,14 @@ export default function loadFavorites(firebaseFavorites) {
             }
             else {
                 addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);
-            }     
+            }
         });
         favoritesNode.appendChild(dom);
-        if(params.sites.includes(favorite.siteId)) {
+        if (params.sites.includes(favorite.siteId)) {
             const button = document.getElementById(favorite.siteId);
             button.classList.add('live');
         }
     });
 }
+
 
