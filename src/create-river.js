@@ -55,11 +55,11 @@ export default function renderRiverLi(riverInfo, listOfSites) {
     const userId = auth.currentUser.uid;
     const userFavoritesRef = favoritesByUserRef.child(userId);
     const userFavoriteRiverRef = userFavoritesRef.child(riverInfo[0]);
-    userFavoriteRiverRef.on('value', (snapshot)=> {
+    userFavoriteRiverRef.on('value', (snapshot) => {
         const value = snapshot.val();
         let isFavorite = false;
         if (value) {
-            userFavoritesRef.on('value', (snapshot)=> {
+            userFavoritesRef.on('value', (snapshot) => {
                 const allFavorites = snapshot.val();
                 loadFavorites(allFavorites);
             });
@@ -92,20 +92,16 @@ export default function renderRiverLi(riverInfo, listOfSites) {
             }
         });
     });
-
-
-    riverTableNode.appendChild(dom);//dom may change to modified var
-    const liveContainer = document.getElementById('live-container');
-    console.log('rivertablechildren!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', riverTableNode.children.length);
-    if(riverTableNode.children.length === 0){
-
-        liveContainer.classList.add('hidden');  
-    }
-    else
-    {
+    
+    riverTableNode.appendChild(dom);
+    console.log('riverTableNode.lenght', riverTableNode.children.length);
+    if(riverTableNode.length !== 0) {
+        const liveContainer = document.getElementById('live-container');
         liveContainer.classList.remove('hidden');
     }
+
 }
+
 
 
 

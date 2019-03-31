@@ -45,15 +45,20 @@ export default function loadFavorites(firebaseFavorites) {
                 const riverTableNode = document.getElementById('river-table');
                 if (riverTableNode.children.length > 1) {
                     addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
+                 
                 }
                 else if (riverTableNode.children.length > 0) {
                     riverTableNode.removeChild(riverTableNode.firstChild);
                     addRemoveSiteFromQuery('subtract', favorite.siteId, currentQuery);
                     const button = document.getElementById(favorite.siteId);
                     button.classList.remove('live');
-
+                    console.log(riverTableNode.children.length);
+                    const liveContainer = document.getElementById('live-container');
+                    console.log('adding hidden');
+                    liveContainer.classList.add('hidden');
+                    }
                 }
-            }
+            
             else {
                 addRemoveSiteFromQuery('add', favorite.siteId, currentQuery);
             }
