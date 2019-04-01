@@ -6,10 +6,12 @@ import createHeader from './shared/create-header.js';
 import loadFavorites from './create-favorites.js';
 import renderSidebarItems from './sidebar-item-template.js';
 import sidebarItems from '../data/sidbar-items.js';
+import createFooter from '../src/shared/create-footer.js';
 
 
 renderSidebarItems(sidebarItems);
 createHeader();
+createFooter();
 
 let query = null;
 

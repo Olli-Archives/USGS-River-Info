@@ -157,6 +157,7 @@ display: flex;
 background: url('../data/cobble2.jpg');
 background-size: cover;
 background-repeat: no-repeat;
+justify-content: center;
 
 
 
@@ -289,4 +290,9 @@ footer div{
 
 #empty-table-message{
     text-transform: uppercase;
+}
+
+#firebaseui-auth-container{
+    align-self: center;
+
 }
