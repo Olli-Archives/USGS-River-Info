@@ -43,6 +43,7 @@ export function createRiverLiHtml(river) {
 
 
 const riverTableNode = document.getElementById('river-table');
+const fieldSetContainer = document.getElementById('fieldset-container');
 
 export default function renderRiverLi(riverInfo, listOfSites) {
     while (riverTableNode.children.length >= listOfSites.length) {
