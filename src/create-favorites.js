@@ -23,16 +23,16 @@ export function createFavoriteLi(firebaseObject) {
 }
 
 export default function loadFavorites(firebaseFavorites) {
+    updateParams();
 
-
-    while (favoritesNode.children.length > 0) {
+    while(favoritesNode.children.length > 0) {
         favoritesNode.firstChild.remove();
     }
 
     const favorites = Object.values(firebaseFavorites);
 
     favorites.forEach(favorite => {
-        updateParams();
+
 
         const dom = createFavoriteLi(favorite);
         const buttonNode = dom.querySelector('.live-data-btn');
@@ -64,7 +64,7 @@ export default function loadFavorites(firebaseFavorites) {
             }
         });
         favoritesNode.appendChild(dom);
-        if (params.sites.includes(favorite.siteId)) {
+        if (params.sites && params.sites.includes(favorite.siteId)) {
             const button = document.getElementById(favorite.siteId);
             button.classList.add('live');
         }

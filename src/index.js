@@ -49,6 +49,7 @@ auth.onAuthStateChanged(() => {
     userFavoritesRef.once('value')
         .then(snapshot => {
             const value = Object.values(snapshot.val());
+            console.log('loading faves');
             loadFavorites(value);
         });
 });
