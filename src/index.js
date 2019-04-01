@@ -7,11 +7,13 @@ import loadFavorites from './create-favorites.js';
 import renderSidebarItems from './sidebar-item-template.js';
 import sidebarItems from '../data/sidbar-items.js';
 import createFooter from '../src/shared/create-footer.js';
+import createFieldset from '../src/createFieldset.js';
 
 
 renderSidebarItems(sidebarItems);
 createHeader();
 createFooter();
+createFieldset();
 
 let query = null;
 
