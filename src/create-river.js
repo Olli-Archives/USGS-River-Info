@@ -46,7 +46,7 @@ const riverTableNode = document.getElementById('river-table');
 
 
 export default function renderRiverLi(riverInfo, listOfSites) {
-    while (riverTableNode.children.length >= listOfSites.length) {
+    while(riverTableNode.children.length >= listOfSites.length) {
         riverTableNode.firstElementChild.remove();
     }
 
@@ -59,7 +59,7 @@ export default function renderRiverLi(riverInfo, listOfSites) {
     userFavoriteRiverRef.on('value', (snapshot) => {
         const value = snapshot.val();
         let isFavorite = false;
-        if (value) {
+        if(value) {
             userFavoritesRef.on('value', (snapshot) => {
                 const allFavorites = snapshot.val();
                 loadFavorites(allFavorites);
@@ -79,7 +79,7 @@ export default function renderRiverLi(riverInfo, listOfSites) {
             favoriteStar.classList.remove('favorite');
         }
         favoriteStar.addEventListener('click', () => {
-            if (isFavorite) {
+            if(isFavorite) {
                 userFavoriteRiverRef.remove();
                 removeFavorite();
 
