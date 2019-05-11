@@ -9,8 +9,7 @@ test('create un-authorized header', assert => {
     //arrange
     const expected = /*html*/`
     <header>
-        <img>
-        <h1>My River Info</h1>
+        <h1>MY RIVER DATA</h1>
     </header>
     `;
     //act
@@ -25,7 +24,7 @@ test('create-header.test.js**create auth header component', assert => {
     const user = { displayName: 'Olli Nieminen' };
     const expected = /*html*/`
     <div class="profile">
-        <span>Welcome Olli Nieminen</span>
+        <span class="user">Welcome Olli Nieminen</span>
         <button>Sign Out</button>
     </div>
     `;

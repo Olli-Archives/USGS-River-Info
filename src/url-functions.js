@@ -44,7 +44,7 @@ export function sliceSitesFromString(sites) {
     let endIndex = [];
 
     let slicedSites = [];
-    for (let i = 0; i < numberOfSites; i++) {
+    for(let i = 0; i < numberOfSites; i++) {
         startIndex = (i * 9);
         endIndex = ((i * 9) + 8);
         slicedSites.push(sites.slice(startIndex, endIndex));
@@ -54,11 +54,11 @@ export function sliceSitesFromString(sites) {
 
 export function addRemoveSiteFromQuery(option, siteId, query) {
 
-
+   
     const currentUrlParams = universalURLSearchParams(['sites', 'parameterCd'], query);
     let listOfSites = [];
-    if (option === 'add') {
-        if (currentUrlParams.sites) {
+    if(option === 'add') {
+        if(currentUrlParams.sites) {
             listOfSites.push(currentUrlParams.sites);
         }
         listOfSites.push(siteId);
@@ -68,21 +68,24 @@ export function addRemoveSiteFromQuery(option, siteId, query) {
         };
         const newQuery = writeToQuery(newParams, query);
         window.location.hash = newQuery;
+        return newQuery;
     }
-    else if (option === 'subtract') {
+    else if(option === 'subtract') {
+       
 
         const currentSites = currentUrlParams.sites;
         const includes = currentSites.includes(siteId);
-        if (includes) {
+        if(includes) {
             const slicedSites = sliceSitesFromString(currentSites);
             const newSites = slicedSites.filter(site => site !== siteId.toString());
             const newParams = {
                 parameterCd: currentUrlParams.parameterCd,
                 siteId: newSites.toString()
             };
-            if (newParams.siteId !== '66') {
+            if(newParams.siteId !== '66') {
                 const newQuery = writeToQuery(newParams, query);
                 window.location.hash = newQuery;
+                return newQuery;
             }
 
         }
