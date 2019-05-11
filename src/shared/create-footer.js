@@ -7,7 +7,7 @@ export default function createFooter() {
     <footer>
         <p id="credit">POWERED BY USGS</p>
             <div>
-                <img src='../data/logo.svg'>
+                <img src='../data/logo.svg' alt="Steelface Designs">
                 <p>SteelFace Designs</p>
             </div>
     </footer>
